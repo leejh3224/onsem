@@ -1,0 +1,19 @@
+name: release-onsem
+
+on:
+    push:
+        branches:
+            - main
+        paths-ignore:
+            - 'README.md'
+            - 'test/**'
+            - '.vscode/**'
+
+jobs:
+	build:
+		runs-on: ubuntu-20.04
+		steps:
+			- uses: actions/checkout@v2
+			- uses: Klemensas/action-autotag@stable
+			with:
+				GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
