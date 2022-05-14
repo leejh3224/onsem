@@ -13,23 +13,23 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     steps:
-		- name: Checkout
+    - name: Checkout
     - uses: actions/checkout@v2
     - uses: Klemensas/action-autotag@stable
       with:
         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
-		- name: Build
-			run: npm run build
-
-		- name: Zip
-			run: zip -r build .
-
-		- name: Release
+    - name: Build
+      run: npm run build
+    
+    - name: Zip
+      run: zip -r build .
+    
+    - name: Release
     - uses: actions/create-release@v1
       env: 
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-				artifacts: "build.zip"
+        artifacts: "build.zip"
         tag_name: ${{ github.ref }}
         release_name: Release ${{ github.ref }}
