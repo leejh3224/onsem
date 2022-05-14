@@ -32,3 +32,4 @@ jobs:
         tag: 0.1.0
         asset_name: build.zip
         file: ./build.zip
+        overwrite: true
