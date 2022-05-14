@@ -26,6 +26,6 @@ jobs:
       name: Release
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: build/*
-        asset_name: build.zip
         tag: 0.1.0
+        file: build/*
+        file_glob: true
