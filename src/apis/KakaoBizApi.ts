@@ -5,7 +5,7 @@ export class KakaoBizApi {
     constructor() {}
 
     async fetchChats(): Promise<FetchChatsResponse> {
-        const chats = await fetch(
+        const res = await fetch(
             `${this.baseURL}/api/profiles/${this.channelId}/chats/search`,
             {
                 method: 'POST',
@@ -22,8 +22,37 @@ export class KakaoBizApi {
             }
         );
 
-        return chats.json();
+        return res.json();
     }
+
+    async fetchManagers(): Promise<FetchManagersResponse> {
+        const res = await fetch(
+            `${this.baseURL}/api/profiles/${this.channelId}/managers?include_params=biz_manager`,
+            {
+                method: 'GET',
+                credentials: 'same-origin',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }
+        );
+
+        return res.json();
+    }
+}
+
+export type FetchManagersResponse = Manager[];
+
+export interface Manager {
+    account_id: number;
+    advise_flag: boolean;
+    email: string;
+    id: number;
+    manager_group: string;
+    name: string;
+    profile: Object;
+    role: 'master' | 'manager';
+    status: 'registered';
 }
 
 export interface FetchChatsResponse {
