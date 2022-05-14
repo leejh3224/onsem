@@ -22,10 +22,13 @@ jobs:
     - name: Build
       run: npm run build
     
+    - name: Zip
+      run: zip -r build .
+    
     - uses: svenstaro/upload-release-action@v2
       name: Release
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         tag: 0.1.0
-        file: build/*
-        file_glob: true
+        asset_name: build.zip
+        file: ./build.zip
