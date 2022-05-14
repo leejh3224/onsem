@@ -25,11 +25,15 @@ jobs:
     - name: Zip
       run: cd build && zip -r ../build.zip .
     
+    - name: Get next version
+      id: get-next-version
+      run: echo "::set-output name=version::$(node get-next-version.js)"
+    
     - uses: svenstaro/upload-release-action@v2
       name: Release
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        tag: 0.1.0
+        tag: ${{ steps.get-next-version.outputs.version }}
         asset_name: build.zip
         file: ./build.zip
         overwrite: true
