@@ -23,7 +23,7 @@ jobs:
       run: npm run build
     
     - name: Zip
-      run: zip -r build .
+      run: cd build && zip -r ../build.zip .
     
     - uses: svenstaro/upload-release-action@v2
       name: Release
