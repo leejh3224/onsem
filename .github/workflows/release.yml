@@ -27,7 +27,9 @@ jobs:
     
     - name: Get next version
       id: get-next-version
-      run: echo "::set-output name=version::$(node get-next-version.js)"
+      run: |
+        echo "$(node get-next-version.js)"
+        echo "::set-output name=version::$(node get-next-version.js)"
     
     - uses: svenstaro/upload-release-action@v2
       name: Release
