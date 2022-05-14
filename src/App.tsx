@@ -10,10 +10,12 @@ function App() {
     const [managers, setManagers] = React.useState<Manager[]>([]);
 
     function getData() {
-        api.fetchChats()
-            .then((data) => setChats(data.items))
-            .then(() => api.fetchManagers())
-            .then((data) => setManagers(data));
+        Promise.all([api.fetchChats(), api.fetchManagers()]).then(
+            ([chatsResponse, managersResponse]) => {
+                setChats(chatsResponse.items);
+                setManagers(managersResponse);
+            }
+        );
     }
 
     function downloadChatsXlsx() {
