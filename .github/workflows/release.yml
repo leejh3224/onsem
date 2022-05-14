@@ -27,10 +27,8 @@ jobs:
     
     - uses: svenstaro/upload-release-action@v2
       name: Release
-      env: 
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: build.zip
-        asset_name: app
+        file: build/*
+        asset_name: build.zip
         tag: 0.1.0
