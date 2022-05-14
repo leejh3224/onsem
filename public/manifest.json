@@ -1,15 +1,16 @@
 {
-  "name": "Create React App Sample",
-  "description": "chrome extension",
-  "version": "0.0.1",
-  "manifest_version": 3,
-  "action": {
-	"default_popup": "index.html",
-	"default_title": "Open the popup"
-  },
-  "icons": {
-	"16": "logo192.png",
-	"48": "logo192.png",
-	"128": "logo192.png"
-  }
+    "name": "Create React App Sample",
+    "description": "chrome extension",
+    "version": "0.0.1",
+    "manifest_version": 3,
+    "action": {
+        "default_popup": "index.html",
+        "default_title": "Open the popup"
+    },
+    "icons": {
+        "16": "logo192.png",
+        "48": "logo192.png",
+        "128": "logo192.png"
+    },
+    "host_permissions": ["https://center-pf.kakao.com/*"]
 }
